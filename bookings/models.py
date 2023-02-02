@@ -13,3 +13,15 @@ class Car(models.Model):
 
     def __str__(self) -> str:
         return f"{self.make} {self.model} from {self.manufacturing_year}"
+
+
+class Booking(models.Model):
+    car = models.ForeignKey(Car, on_delete=models.CASCADE,
+                            related_name="booking")
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name='bookings')
+    date = models.DateTimeField(unique=True, blank=False, null=False)
+    created_on = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return f"Booking for {self.car} by {self.author}"
