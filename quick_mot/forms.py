@@ -1,6 +1,7 @@
 
 from allauth.account.forms import SignupForm
 from django import forms
+from bookings.models import Car
 
 
 class CustomSignupForm(SignupForm):
@@ -15,3 +16,9 @@ class CustomSignupForm(SignupForm):
         user.phone_number = self.cleaned_data['phone_number']
         user.save()
         return user
+
+
+class CarsForm(forms.ModelForm):
+    class Meta:
+        model = Car
+        fields = ['reg_number',]
