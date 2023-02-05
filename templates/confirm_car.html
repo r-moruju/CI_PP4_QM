@@ -8,19 +8,15 @@
         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
                 src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
         <div class="col-lg-5">
-            <h1 class="font-weight-light">Quick MOT</h1>
-            <p class="card-text">Enter your car registration number.</p>
-            <form action="" method="post">
-                {% csrf_token %}
-                <p>
-                    <input type="text" name="car_reg" id="car_reg">
-                </p>
-                <div>
-                    <p>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </p>
-                </div>
-            </form>
+            <h1 class="font-weight-light">Confirm Car</h1>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Make: {{ data.make }}</li>
+                <li class="list-group-item">Colour: {{ data.colour }}</li>
+                <li class="list-group-item">Year: {{ data.yearOfManufacture }}</li>
+                <li class="list-group-item">Registration: {{ data.registrationNumber }}</li>
+                <li class="list-group-item">MOT expiry date: {{ data.motExpiryDate }}</li>
+            </ul>
+            <a class="btn btn-primary" href="">Confirm</a>
         </div>
     </div>
     <!-- Call to Action-->

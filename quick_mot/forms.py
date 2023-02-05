@@ -18,7 +18,7 @@ class CustomSignupForm(SignupForm):
         return user
 
 
-class CarsForm(forms.ModelForm):
-    class Meta:
-        model = Car
-        fields = ['reg_number',]
+# class CarsForm(forms.ModelForm):
+#     class Meta:
+#         model = Car
+#         fields = ['reg_number']

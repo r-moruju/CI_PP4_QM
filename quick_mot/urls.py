@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('accounts/', include('allauth.urls')),
-    path('car_reg/', views.add_car_reg, name='add_car_reg')
+    path('ad_car_reg/', views.add_car_reg, name='add_car_reg'),
+    path('confirm_car/', views.confirm_car, name='confirm_car')
 ]
