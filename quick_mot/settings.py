@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'bookings',
+    'bootstrap_datepicker_plus',
 ]
 
 SITE_ID = 1

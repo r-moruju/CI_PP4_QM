@@ -1,7 +1,8 @@
 
 from allauth.account.forms import SignupForm
 from django import forms
-from bookings.models import Car
+from bookings.models import Booking
+from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 
 
 class CustomSignupForm(SignupForm):
@@ -18,7 +19,10 @@ class CustomSignupForm(SignupForm):
         return user
 
 
-# class CarsForm(forms.ModelForm):
-#     class Meta:
-#         model = Car
-#         fields = ['reg_number']
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ['date']
+        widgets = {'date': DateTimePickerInput(options={
+            'format': "MM/DD/YYYY HH:mm"
+        })}

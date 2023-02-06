@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Car(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE,
                               related_name='cars')
-    reg_number = models.CharField(max_length=10, blank=False, null=False,)
+    reg_number = models.CharField(max_length=10, blank=False, null=False, unique=True)
     mot_expire_date = models.DateField()
     make = models.TextField()
     color = models.TextField()

@@ -22,5 +22,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('accounts/', include('allauth.urls')),
     path('ad_car_reg/', views.add_car_reg, name='add_car_reg'),
-    path('confirm_car/', views.confirm_car, name='confirm_car')
+    path('confirm_car/', views.confirm_car, name='confirm_car'),
+    path('add_booking/', views.add_booking, name='add_booking')
 ]
