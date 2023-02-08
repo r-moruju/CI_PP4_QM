@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'bookings',
+    "bootstrap4",
     'bootstrap_datepicker_plus',
 ]
 

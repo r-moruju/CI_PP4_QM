@@ -2,7 +2,7 @@
 from allauth.account.forms import SignupForm
 from django import forms
 from bookings.models import Booking
-from bootstrap_datepicker_plus.widgets import DateTimePickerInput
+from bootstrap_datepicker_plus.widgets import DatePickerInput
 
 
 class CustomSignupForm(SignupForm):
@@ -19,10 +19,16 @@ class CustomSignupForm(SignupForm):
         return user
 
 
-class BookingForm(forms.ModelForm):
-    class Meta:
-        model = Booking
-        fields = ['date']
-        widgets = {'date': DateTimePickerInput(options={
-            'format': "MM/DD/YYYY HH:mm"
-        })}
+# class BookingForm(forms.ModelForm):
+#     class Meta:
+#         model = Booking
+#         fields = ['date']
+#         widgets = {'date': DateTimePickerInput(options={
+#             'format': "MM/DD/YYYY HH:mm"
+#         })}
+
+
+class BookingForm(forms.Form):
+    date = forms.DateField(widget=DatePickerInput(options={
+        'format': "MM/DD/YYYY"
+    }))

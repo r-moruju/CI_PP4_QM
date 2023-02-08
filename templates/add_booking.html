@@ -9,10 +9,12 @@
                 src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
         <div class="col-lg-5">
             <h1 class="font-weight-light">Date selection</h1>
-            {% csrf_token %}
-            {{ form.as_p }}
-            {{ form.media }}
-            <a class="btn btn-primary" href="">Select date</a>
+            <form action="confirm_booking" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {{ form.media }}
+                <button class="btn btn-primary" type="submit">Confirm</button>
+            </form>
         </div>
     </div>
     <!-- Call to Action-->

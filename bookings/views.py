@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Car
+from .models import Car, Booking
 from quick_mot.forms import BookingForm
 from quick_mot.mot_api import get_car_data
 
@@ -44,3 +44,17 @@ def add_booking(request):
         'cars': cars
     }
     return render(request, 'add_booking.html', context)
+
+
+def confirm_booking(request):
+    current_car = Car.objects.filter(owner=request.user)[0]
+    if request.method == "POST":
+        input_field = request.POST.get('date')
+        if not Booking.objects.filter(date=input_field).exists():
+            booking = Booking(
+                author=request.user,
+                date=input_field,
+                car=current_car
+            )
+            booking.save()
+            return redirect('home')
