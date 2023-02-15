@@ -91,4 +91,7 @@ def confirm_booking(request):
 def delete_booking(request, booking_id):
     item = get_object_or_404(Booking, id=booking_id)
     item.delete()
+    car = item.car
+    car.booked = False
+    car.save()
     return redirect("home")
