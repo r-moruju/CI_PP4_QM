@@ -34,10 +34,42 @@
     <div class="row gx-4 gx-lg-5">
         <div class="col-md-4 mb-5">
             <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Card One</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
-                        numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                <div class="card-body red-bg">
+                    <h2 class="card-title">Bookings</h2>
+                    <p class="card-text">Upcomming bookings.</p>
+                    {% if user.is_authenticated %}
+                    <div id="bookings_carousel" class="carousel slide">
+                        <div class="carousel-inner">
+                            {% for booking in bookings %}
+                            {% if forloop.counter == 1 %}
+                            <div class="carousel-item red-bg active">
+                                <p class="text-center">{{ booking }}</p>
+                                <a class="btn btn-primary btn-sm" href="/delete_booking/{{ booking.id }}">Cancel</a>
+                            </div>
+                            {% else %}
+                            <div class="carousel-item red-bg">
+                                <p class="text-center">{{ booking }}</p>
+                                <a class="btn btn-primary btn-sm" href="/delete_booking/{{ booking.id }}">Cancel</a>
+                            </div>
+                            {% endif %}
+                            {% empty %}
+                            <p class="text-center">No bookings</p>
+                            {% endfor %}
+                        </div>
+                        <button class="carousel-control-prev top-pos" type="button" data-bs-target="#bookings_carousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon text-secondary" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next top-pos" type="button" data-bs-target="#bookings_carousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon text-secondary" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    {% else %}
+                    <p>Log in to see bookings</p>
+                    {% endif %}
                 </div>
                 <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
             </div>

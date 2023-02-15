@@ -14,21 +14,37 @@ def home(request):
 
 
 def confirm_car(request):
+    if request.user.is_authenticated:
+        bookings = Booking.objects.filter(author=request.user)
+    else:
+        bookings = None
     data = request.session['data']
-    return render(request, "confirm_car.html", {'data': data})
+    context = {
+        'data': data,
+        'bookings': bookings
+    }
+    return render(request, "confirm_car.html", context)
 
 
 def add_car_reg(request):
+    if request.user.is_authenticated:
+        bookings = Booking.objects.filter(author=request.user)
+    else:
+        bookings = None
     if request.method == "POST":
         field = request.POST.get('car_reg')
         car_data = get_car_data(field.upper())
         request.session['data'] = car_data
         return redirect('confirm_car')
 
-    return render(request, 'add_car_reg.html')
+    return render(request, 'add_car_reg.html', {'bookings': bookings})
 
 
 def add_booking(request):
+    if request.user.is_authenticated:
+        bookings = Booking.objects.filter(author=request.user)
+    else:
+        bookings = None
     data = request.session['data']
 
     if not Car.objects.filter(reg_number=data['registrationNumber']).exists():
@@ -38,15 +54,15 @@ def add_booking(request):
             reg_number=data['registrationNumber'],
             mot_expire_date=data['motExpiryDate'],
             color=data['colour'],
-            manufacturing_year=data['yearOfManufacture']
+            manufacturing_year=data['yearOfManufacture'],
+            booked=False
         )
         car.save()
 
-    cars = Car.objects.all
     form = BookingForm()
     context = {
         'form': form,
-        'cars': cars
+        'bookings': bookings
     }
     return render(request, 'add_booking.html', context)
 
@@ -56,8 +72,13 @@ def confirm_booking(request):
     current_car = Car.objects.filter(reg_number=data['registrationNumber'])[0]
     if request.method == "POST":
         input_field = request.POST.get('date')
-        if not current_car.booked:
+        if current_car.booked is True:
+            messages.warning(request,
+                             'This car is allready booked')
+            return redirect('add_car_reg')
+        else:
             current_car.booked = True
+            current_car.save()
             booking = Booking(
                 author=request.user,
                 date=input_field,
@@ -65,10 +86,6 @@ def confirm_booking(request):
             )
             booking.save()
             return redirect('home')
-        else:
-            messages.warning(request,
-                             'This car is allready booked')
-            return redirect('add_car_reg')
 
 
 def delete_booking(request, booking_id):

@@ -11,7 +11,7 @@ class Car(models.Model):
     make = models.TextField()
     color = models.TextField()
     manufacturing_year = models.TextField()
-    booked = models.BooleanField(default=False)
+    booked = models.BooleanField()
 
     def __str__(self) -> str:
         return f"{self.color} {self.make} from {self.manufacturing_year}"
