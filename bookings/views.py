@@ -69,3 +69,9 @@ def confirm_booking(request):
             messages.warning(request,
                              'This car is allready booked')
             return redirect('add_car_reg')
+
+
+def delete_booking(request, booking_id):
+    item = get_object_or_404(Booking, id=booking_id)
+    item.delete()
+    return redirect("home")
