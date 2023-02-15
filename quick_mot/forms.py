@@ -19,16 +19,7 @@ class CustomSignupForm(SignupForm):
         return user
 
 
-# class BookingForm(forms.ModelForm):
-#     class Meta:
-#         model = Booking
-#         fields = ['date']
-#         widgets = {'date': DateTimePickerInput(options={
-#             'format': "MM/DD/YYYY HH:mm"
-#         })}
-
-
 class BookingForm(forms.Form):
     date = forms.DateField(widget=DatePickerInput(options={
-        'format': "MM/DD/YYYY"
+        'format': "YYYY/MM/DD"
     }))

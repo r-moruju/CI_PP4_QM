@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 class Car(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE,
                               related_name='cars')
-    reg_number = models.CharField(max_length=10, blank=False, null=False, unique=True)
+    reg_number = models.CharField(max_length=10, blank=False, null=False,
+                                  unique=True)
     mot_expire_date = models.DateField()
     make = models.TextField()
     color = models.TextField()
@@ -21,8 +22,8 @@ class Booking(models.Model):
                             related_name="booking")
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name='bookings')
-    date = models.DateTimeField(unique=True, blank=False, null=False)
+    date = models.DateField(blank=False, null=False)
     created_on = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"Booking for {self.car} by {self.author}"
+        return f"{self.car} on {self.date}"

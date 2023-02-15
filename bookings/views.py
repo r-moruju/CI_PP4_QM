@@ -6,7 +6,11 @@ from quick_mot.mot_api import get_car_data
 
 
 def home(request):
-    return render(request, '../templates/index.html')
+    if request.user.is_authenticated:
+        bookings = Booking.objects.filter(author=request.user)
+    else:
+        bookings = None
+    return render(request, '../templates/index.html', {'bookings': bookings})
 
 
 def confirm_car(request):
@@ -48,7 +52,8 @@ def add_booking(request):
 
 
 def confirm_booking(request):
-    current_car = Car.objects.filter(owner=request.user)[0]
+    data = request.session['data']
+    current_car = Car.objects.filter(reg_number=data['registrationNumber'])[0]
     if request.method == "POST":
         input_field = request.POST.get('date')
         if not current_car.booked:

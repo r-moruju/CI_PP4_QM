@@ -10,13 +10,12 @@
         <div class="col-lg-5">
             <h1 class="font-weight-light">Quick MOT</h1>
             {% if user.is_authenticated %}
-            <p>Welcome! {{ user.first_name }}, Let's start the procces to schedule the MOT test for your car,
-                click on "Book MOT Test" to get started.
+            <p>Welcome! {{ user.first_name }}, Let's start the procces to schedule the MOT test for your car, 
+                click on "Book MOT Test" to get started. 
                 We will need the car registration number.</p>
             <a class="btn btn-primary" href="{% url 'add_car_reg' %}">Book MOT Test</a>
             {% else %}
-            <p>Welcome! Here is the perfect place to schedule the MOT test for your car, click on "Register" to get
-                started</p>
+            <p>Welcome! Here is the perfect place to schedule the MOT test for your car, click on "Register" to get started</p>
             <a class="btn btn-primary" href="{% url 'account_signup' %}">Register</a>
             {% endif %}
         </div>
@@ -33,34 +32,9 @@
         <div class="col-md-4 mb-5">
             <div class="card h-100">
                 <div class="card-body">
-                    <h2 class="card-title">Bookings</h2>
-                    <p class="card-text">Upcomming bookings.</p>
-                    {% if user.is_authenticated %}
-                    <div id="bookings_carousel" class="carousel slide">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-
-                            </div>
-                            {% for booking in bookings %}
-                            <div class="carousel-item">
-                                <p>{{ booking }}</p>
-                            </div>
-                            {% endfor %}
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#bookings_carousel"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon text-secondary" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#bookings_carousel"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon text-secondary" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                    {% else %}
-                    <p>Log in to see bookings</p>
-                    {% endif %}
+                    <h2 class="card-title">Card One</h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
+                        numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
                 </div>
                 <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
             </div>
