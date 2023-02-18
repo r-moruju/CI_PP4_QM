@@ -85,6 +85,8 @@ def confirm_booking(request):
                 car=current_car
             )
             booking.save()
+            messages.warning(request,
+                             f'Successfully booked {current_car}')
             return redirect('home')
 
 
