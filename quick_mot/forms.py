@@ -23,3 +23,9 @@ class BookingForm(forms.Form):
     date = forms.DateField(widget=DatePickerInput(options={
         'format': "YYYY/MM/DD"
     }))
+
+
+class ChangeBookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ['date']

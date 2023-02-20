@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Car, Booking
-from quick_mot.forms import BookingForm
+from quick_mot.forms import BookingForm, ChangeBookingForm
 from quick_mot.mot_api import get_car_data
 
 
@@ -74,7 +74,7 @@ def confirm_booking(request):
         input_field = request.POST.get('date')
         if current_car.booked is True:
             messages.warning(request,
-                             'This car is allready booked')
+                             'This car is allready booked!')
             return redirect('add_car_reg')
         else:
             current_car.booked = True
@@ -97,3 +97,21 @@ def delete_booking(request, booking_id):
     car.booked = False
     car.save()
     return redirect("home")
+
+
+def change_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+    if request.method == "POST":
+        form = ChangeBookingForm(request.POST, instance=booking)
+        if form.is_valid():
+            form.save()
+            messages.warning(request,
+                             'Booking date have been changed.')
+            return redirect("home")
+    form = ChangeBookingForm(instance=booking)
+    context = {
+        'booking': booking,
+        'form': form
+    }
+
+    return render(request, 'change_booking.html', context)

@@ -8,16 +8,15 @@
         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
                 src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
         <div class="col-lg-5">
-            <h1 class="font-weight-light">Confirm Car</h1>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Make: {{ data.make }}</li>
-                <li class="list-group-item">Colour: {{ data.colour }}</li>
-                <li class="list-group-item">Year: {{ data.yearOfManufacture }}</li>
-                <li class="list-group-item">Registration: {{ data.registrationNumber }}</li>
-                <li class="list-group-item">MOT expiry date: {{ data.motExpiryDate }}</li>
-            </ul>
-            <a class="btn btn-primary" href="{% url 'add_booking' %}">Confirm</a>
-            <a class="btn btn-primary" href="{% url 'add_car_reg' %}">Back</a>
+            <h1 class="font-weight-light">Change Date</h1>
+            <p class="card-text">Select new date for {{ booking.car }}</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {{ form.media }}
+                <button class="btn btn-primary btn-sm" type="submit">Confirm</button>
+                <a class="btn btn-primary btn-sm" href="{% url 'home' %}">Cancel</a>
+            </form>
         </div>
     </div>
     <!-- Call to Action-->
