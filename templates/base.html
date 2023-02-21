@@ -61,14 +61,103 @@
             </div>
         </div>
     </div>
-    
+
     <main class="flex-shrink-0">
-        {% block content %}
-        <!-- Content Goes here -->
-        {% endblock content %}
+        <!-- Page Content-->
+        <div class="container px-4 px-lg-5">
+            {% block content %}
+            <!-- Content Goes here -->
+            {% endblock content %}
+            <!-- Call to Action-->
+            <div class="card text-white bg-secondary my-5 py-4 text-center">
+                <div class="card-body">
+                    <p class="text-white m-0">Honest and friendly service</p>
+                </div>
+            </div>
+            <!-- Content Row-->
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+                        <div class="card-body red-bg">
+                            <h2 class="card-title">Bookings</h2>
+                            <p class="card-text">Upcomming bookings.</p>
+                            {% if user.is_authenticated %}
+                            <div id="bookings_carousel" class="carousel slide">
+                                <div class="carousel-inner">
+                                    {% for booking in bookings %}
+                                    {% if forloop.counter == 1 %}
+                                    <div class="carousel-item red-bg active">
+                                        <p class="text-center">{{ booking }}</p>
+                                        <form style="display: inline;" action="{% url 'delete_booking' booking.id %}"
+                                            method="post"
+                                            onsubmit="return confirm('Are you sure you want to cancel this booking for {{ booking.car }}?')">
+                                            {% csrf_token %}
+                                            <button class="btn btn-danger btn-sm" type="submit">Cancel</button>
+                                        </form>
+                                        <a class="btn btn-primary btn-sm" href="/change_booking/{{ booking.id }}">Change
+                                            Date</a>
+                                    </div>
+                                    {% else %}s
+                                    <div class="carousel-item red-bg">
+                                        <p class="text-center">{{ booking }}</p>
+                                        <form style="display: inline;" action="{% url 'delete_booking' booking.id %}"
+                                            method="post"
+                                            onsubmit="return confirm('Are you sure you want to cancel this booking for {{ booking.car }}?')">
+                                            {% csrf_token %}
+                                            <button class="btn btn-danger btn-sm" type="submit">Cancel</button>
+                                        </form>
+                                        <a class="btn btn-primary btn-sm" href="/change_booking/{{ booking.id }}">Change
+                                            Date</a>
+                                    </div>
+                                    {% endif %}
+                                    {% empty %}
+                                    <p class="text-center">No bookings</p>
+                                    {% endfor %}
+                                </div>
+                                <button class="carousel-control-prev top-pos" type="button"
+                                    data-bs-target="#bookings_carousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon text-secondary" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next top-pos" type="button"
+                                    data-bs-target="#bookings_carousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon text-secondary" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                            {% else %}
+                            <p>Log in to see bookings</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+                        <div class="card-body red-bg">
+                            <h2 class="card-title">Card Two</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur
+                                ex natus
+                                at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore
+                                voluptates
+                                quos eligendi labore.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+                        <div class="card-body red-bg">
+                            <h2 class="card-title">Card Three</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni
+                                quas ex
+                                numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <!-- Footer-->
-    <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
+    <footer class="footer mt-auto py-3 bg-dark">
         <div class="container px-4 px-lg-5">
             <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
         </div>
