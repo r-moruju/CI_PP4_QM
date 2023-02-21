@@ -9,3 +9,4 @@ const bookingsCarousel = document.querySelector('#bookings_carousel')
 const carousel = new bootstrap.Carousel(bookingsCarousel, {
   ride: false
 })
+

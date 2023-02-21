@@ -42,13 +42,19 @@
                             {% if forloop.counter == 1 %}
                             <div class="carousel-item red-bg active">
                                 <p class="text-center">{{ booking }}</p>
-                                <a class="btn btn-primary btn-sm" href="/delete_booking/{{ booking.id }}">Cancel</a>
+                                <form style="display: inline;" action="{% url 'delete_booking' booking.id %}" method="post" onsubmit="return confirm('Are you sure you want to cancel this booking for {{ booking.car }}?')">
+                                    {% csrf_token %}
+                                <button class="btn btn-primary btn-sm" type="submit">Cancel</button>
+                                </form>
                                 <a class="btn btn-primary btn-sm" href="/change_booking/{{ booking.id }}">Change Date</a>
                             </div>
-                            {% else %}
+                            {% else %}s
                             <div class="carousel-item red-bg">
                                 <p class="text-center">{{ booking }}</p>
-                                <a class="btn btn-primary btn-sm" href="/delete_booking/{{ booking.id }}">Cancel</a>
+                                <form style="display: inline;" action="{% url 'delete_booking' booking.id %}" method="post" onsubmit="return confirm('Are you sure you want to cancel this booking for {{ booking.car }}?')">
+                                    {% csrf_token %}
+                                <button class="btn btn-primary btn-sm" type="submit">Cancel</button>
+                                </form>
                                 <a class="btn btn-primary btn-sm" href="/change_booking/{{ booking.id }}">Change Date</a>
                             </div>
                             {% endif %}

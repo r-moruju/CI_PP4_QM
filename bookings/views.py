@@ -96,6 +96,8 @@ def delete_booking(request, booking_id):
     car = item.car
     car.booked = False
     car.save()
+    messages.warning(request,
+                     f'Booking deleted for {car}!')
     return redirect("home")
 
 
