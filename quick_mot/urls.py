@@ -30,4 +30,5 @@ urlpatterns = [
          views.change_booking, name='change_booking'),
     path('delete_booking/<booking_id>/',
          views.delete_booking, name='delete_booking'),
+    path('rate/<int:site_id>/<int:rating>/', views.rate, name='rate')
 ]

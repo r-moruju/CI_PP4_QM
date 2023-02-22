@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Car, Booking
+from .models import Car, Booking, Site, Rating
 
 
 @admin.register(Car)
@@ -15,3 +15,9 @@ class BookingAdmin(admin.ModelAdmin):
 
     list_filter = ('date',)
     list_display = ('car', 'author', 'date')
+
+
+@admin.register(Site)
+class SiteAdmin(admin.ModelAdmin):
+
+    list_display = ('header', )

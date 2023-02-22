@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Avg
 
 
 class Car(models.Model):
@@ -27,3 +28,22 @@ class Booking(models.Model):
 
     def __str__(self) -> str:
         return f"{self.car} on {self.date}"
+
+
+class Site(models.Model):
+    header = models.CharField(max_length=100, default="Service Rating")
+
+    def average_rating(self) -> float:
+        return Rating.objects.filter(site=self).aggregate(Avg("rating"))["rating__avg"] or 0
+
+    def __str__(self):
+        return f"{self.header}: {self.average_rating()}"
+
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    site = models.ForeignKey(Site, on_delete=models.CASCADE)
+    rating = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.site.header}: {self.rating}"

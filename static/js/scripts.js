@@ -10,3 +10,14 @@ const carousel = new bootstrap.Carousel(bookingsCarousel, {
   ride: false
 })
 
+
+const rate = (rating, site_id) => {
+  fetch(`/rate/${site_id}/${rating}/`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  }).then(rest => {
+      window.location.reload();
+  })
+}

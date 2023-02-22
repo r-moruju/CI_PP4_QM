@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Car, Booking
+from .models import Car, Booking, Site, Rating
 from quick_mot.forms import BookingForm, ChangeBookingForm
 from quick_mot.mot_api import get_car_data
 
@@ -10,7 +10,23 @@ def home(request):
         bookings = Booking.objects.filter(author=request.user)
     else:
         bookings = None
-    return render(request, '../templates/index.html', {'bookings': bookings})
+    sites = Site.objects.all()
+    for site in sites:
+        if request.user.is_authenticated:
+            rating = Rating.objects.filter(site=site,
+                                           user=request.user).first()
+        else:
+            rating = 0
+        site.user_rating = rating.rating if rating else 0
+    return render(request, '../templates/index.html',
+                  {'bookings': bookings, 'sites': sites})
+
+
+def rate(request, site_id, rating):
+    site = Site.objects.get(id=site_id)
+    Rating.objects.filter(site=site, user=request.user).delete()
+    site.rating_set.create(user=request.user, rating=rating)
+    return redirect('home')
 
 
 def confirm_car(request):
@@ -36,7 +52,6 @@ def add_car_reg(request):
         car_data = get_car_data(field.upper())
         request.session['data'] = car_data
         return redirect('confirm_car')
-
     return render(request, 'add_car_reg.html', {'bookings': bookings})
 
 
@@ -58,7 +73,6 @@ def add_booking(request):
             booked=False
         )
         car.save()
-
     form = BookingForm()
     context = {
         'form': form,
@@ -115,5 +129,4 @@ def change_booking(request, booking_id):
         'booking': booking,
         'form': form
     }
-
     return render(request, 'change_booking.html', context)
