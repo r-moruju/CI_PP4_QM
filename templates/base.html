@@ -6,8 +6,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="A Website for A MOT Testing Centre" />
+    <meta name="author" content="Quick MOT" />
     <title>Quick MOT</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href=".static/favicon.ico" />
@@ -144,48 +144,48 @@
                     <div class="card h-100">
                         <div class="card-body red-bg">
                             {% for site in sites %}
-                            {% if user.is_authenticated%}
-                            <h2 class="card-title">{{ site.header }}</h2>
-                            <p class="card-text">Show us your satisfaction level</p>
-                            <h5 class="card-title">Avg rating:
-                                <span class="fa fa-star {% if site.average_rating > 0 %} checked {% endif %}"></span>
-                                <span class="fa fa-star {% if site.average_rating > 1 %} checked {% endif %}"></span>
-                                <span class="fa fa-star {% if site.average_rating > 2 %} checked {% endif %}"></span>
-                                <span class="fa fa-star {% if site.average_rating > 3 %} checked {% endif %}"></span>
-                                <span class="fa fa-star {% if site.average_rating > 4 %} checked {% endif %}"></span>
-                            </h5>
-                            {% if site.user_rating > 0 %}
-                            <p class="card-text">Thank you for your rating!</p>
-                            {% else %}
-                            <ul class="btn btn-light list-inline rating-list">
-                                <li onclick="rate(5, {{ site.id }})">
-                                    <i class="fa fa-star {% if site.user_rating > 4 %} checked {% endif %}"
-                                        title="Rate 5"></i></li>
-                                <li onclick="rate(4, {{ site.id }})">
-                                    <i class="fa fa-star {% if site.user_rating > 3 %} checked {% endif %}"
-                                        title="Rate 4"></i></li>
-                                <li onclick="rate(3, {{ site.id }})">
-                                    <i class="fa fa-star {% if site.user_rating > 2 %} checked {% endif %}"
-                                        title="Rate 3"></i></li>
-                                <li onclick="rate(2, {{ site.id }})">
-                                    <i class="fa fa-star {% if site.user_rating > 1 %} checked {% endif %}"
-                                        title="Rate 2"></i></li>
-                                <li onclick="rate(1, {{ site.id }})">
-                                    <i class="fa fa-star {% if site.user_rating > 0 %} checked {% endif %}"
-                                        title="Rate 1"></i></li>
-                            </ul>
-                            {% endif %}
-                            {% else %}
-                            <h2 class="card-title">Rate us!</h2>
-                            <p class="card-text">Log in to rate our service.</p>
-                            <h5 class="card-title">Avg rating:
-                                <span class="fa fa-star {% if site.average_rating > 0 %} checked {% endif %}"></span>
-                                <span class="fa fa-star {% if site.average_rating > 1 %} checked {% endif %}"></span>
-                                <span class="fa fa-star {% if site.average_rating > 2 %} checked {% endif %}"></span>
-                                <span class="fa fa-star {% if site.average_rating > 3 %} checked {% endif %}"></span>
-                                <span class="fa fa-star {% if site.average_rating > 4 %} checked {% endif %}"></span>
-                            </h5>
-                            {% endif %}
+                                {% if user.is_authenticated%}
+                                <h2 class="card-title">{{ site.header }}</h2>
+                                <p class="card-text">Show us your satisfaction level</p>
+                                <h5 class="card-title">Avg rating:
+                                    <span class="fa fa-star {% if site.average_rating > 0 %} checked {% endif %}"></span>
+                                    <span class="fa fa-star {% if site.average_rating > 1 %} checked {% endif %}"></span>
+                                    <span class="fa fa-star {% if site.average_rating > 2 %} checked {% endif %}"></span>
+                                    <span class="fa fa-star {% if site.average_rating > 3 %} checked {% endif %}"></span>
+                                    <span class="fa fa-star {% if site.average_rating > 4 %} checked {% endif %}"></span>
+                                </h5>
+                                    {% if site.user_rating > 0 %}
+                                    <p class="card-text">Thank you for your rating!</p>
+                                    {% else %}
+                                    <ul class="btn btn-light list-inline rating-list">
+                                        <li onclick="rate(5, {{ site.id }})">
+                                            <i class="fa fa-star {% if site.user_rating > 4 %} checked {% endif %}"
+                                                title="Rate 5"></i></li>
+                                        <li onclick="rate(4, {{ site.id }})">
+                                            <i class="fa fa-star {% if site.user_rating > 3 %} checked {% endif %}"
+                                                title="Rate 4"></i></li>
+                                        <li onclick="rate(3, {{ site.id }})">
+                                            <i class="fa fa-star {% if site.user_rating > 2 %} checked {% endif %}"
+                                                title="Rate 3"></i></li>
+                                        <li onclick="rate(2, {{ site.id }})">
+                                            <i class="fa fa-star {% if site.user_rating > 1 %} checked {% endif %}"
+                                                title="Rate 2"></i></li>
+                                        <li onclick="rate(1, {{ site.id }})">
+                                            <i class="fa fa-star {% if site.user_rating > 0 %} checked {% endif %}"
+                                                title="Rate 1"></i></li>
+                                    </ul>
+                                    {% endif %}
+                                {% else %}
+                                <h2 class="card-title">Rate us!</h2>
+                                <p class="card-text">Log in to rate our service.</p>
+                                <h5 class="card-title">Avg rating:
+                                    <span class="fa fa-star {% if site.average_rating > 0 %} checked {% endif %}"></span>
+                                    <span class="fa fa-star {% if site.average_rating > 1 %} checked {% endif %}"></span>
+                                    <span class="fa fa-star {% if site.average_rating > 2 %} checked {% endif %}"></span>
+                                    <span class="fa fa-star {% if site.average_rating > 3 %} checked {% endif %}"></span>
+                                    <span class="fa fa-star {% if site.average_rating > 4 %} checked {% endif %}"></span>
+                                </h5>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
@@ -196,7 +196,7 @@
     <!-- Footer-->
     <footer class="footer mt-auto py-3 bg-dark">
         <div class="container px-4 px-lg-5">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Quick MOT 2023</p>
         </div>
     </footer>
     <!-- Bootstrap core JS-->

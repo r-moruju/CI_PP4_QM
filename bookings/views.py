@@ -30,6 +30,7 @@ def rate(request, site_id, rating):
 
 
 def confirm_car(request):
+    sites = Site.objects.all()
     if request.user.is_authenticated:
         bookings = Booking.objects.filter(author=request.user)
     else:
@@ -37,12 +38,14 @@ def confirm_car(request):
     data = request.session['data']
     context = {
         'data': data,
-        'bookings': bookings
+        'bookings': bookings,
+        'sites': sites
     }
     return render(request, "confirm_car.html", context)
 
 
 def add_car_reg(request):
+    sites = Site.objects.all()
     if request.user.is_authenticated:
         bookings = Booking.objects.filter(author=request.user)
     else:
@@ -52,10 +55,12 @@ def add_car_reg(request):
         car_data = get_car_data(field.upper())
         request.session['data'] = car_data
         return redirect('confirm_car')
-    return render(request, 'add_car_reg.html', {'bookings': bookings})
+    return render(request, 'add_car_reg.html',
+                  {'bookings': bookings, 'sites': sites})
 
 
 def add_booking(request):
+    sites = Site.objects.all()
     if request.user.is_authenticated:
         bookings = Booking.objects.filter(author=request.user)
     else:
@@ -76,7 +81,8 @@ def add_booking(request):
     form = BookingForm()
     context = {
         'form': form,
-        'bookings': bookings
+        'bookings': bookings,
+        'sites': sites
     }
     return render(request, 'add_booking.html', context)
 
@@ -116,6 +122,7 @@ def delete_booking(request, booking_id):
 
 
 def change_booking(request, booking_id):
+    sites = Site.objects.all()
     booking = get_object_or_404(Booking, id=booking_id)
     if request.method == "POST":
         form = ChangeBookingForm(request.POST, instance=booking)
@@ -127,6 +134,7 @@ def change_booking(request, booking_id):
     form = ChangeBookingForm(instance=booking)
     context = {
         'booking': booking,
-        'form': form
+        'form': form,
+        'sites': sites
     }
     return render(request, 'change_booking.html', context)
