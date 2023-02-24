@@ -4,6 +4,9 @@ from django.db.models import Avg
 
 
 class Car(models.Model):
+    """
+    Model to store Car information
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE,
                               related_name='cars')
     reg_number = models.CharField(max_length=10, blank=False, null=False,
@@ -19,6 +22,9 @@ class Car(models.Model):
 
 
 class Booking(models.Model):
+    """
+    Model to store Booking information for specific Car and User
+    """
     car = models.ForeignKey(Car, on_delete=models.CASCADE,
                             related_name="booking")
     author = models.ForeignKey(User, on_delete=models.CASCADE,
@@ -31,6 +37,10 @@ class Booking(models.Model):
 
 
 class Site(models.Model):
+    """
+    Simple model to store Site Rating Average
+    Inspired from https://medium.com/geekculture/django-implementing-star-rating-e1deff03bb1c
+    """
     header = models.CharField(max_length=100, default="Service Rating")
 
     def average_rating(self) -> float:
@@ -41,6 +51,10 @@ class Site(models.Model):
 
 
 class Rating(models.Model):
+    """
+    To store User ratig    
+    Inspired from https://medium.com/geekculture/django-implementing-star-rating-e1deff03bb1c
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     site = models.ForeignKey(Site, on_delete=models.CASCADE)
     rating = models.IntegerField(default=0)
