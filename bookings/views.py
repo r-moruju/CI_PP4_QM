@@ -6,10 +6,15 @@ from quick_mot.mot_api import get_car_data
 
 
 def home(request):
+    """
+    Render home page
+    """
     if request.user.is_authenticated:
         bookings = Booking.objects.filter(author=request.user)
     else:
         bookings = None
+
+    # Get current rating
     sites = Site.objects.all()
     for site in sites:
         if request.user.is_authenticated:
@@ -23,6 +28,9 @@ def home(request):
 
 
 def rate(request, site_id, rating):
+    """
+    Save new user rating
+    """
     site = Site.objects.get(id=site_id)
     Rating.objects.filter(site=site, user=request.user).delete()
     site.rating_set.create(user=request.user, rating=rating)
@@ -30,6 +38,9 @@ def rate(request, site_id, rating):
 
 
 def confirm_car(request):
+    """
+    Display Car information for user to confirm
+    """
     sites = Site.objects.all()
     if request.user.is_authenticated:
         bookings = Booking.objects.filter(author=request.user)
@@ -45,6 +56,10 @@ def confirm_car(request):
 
 
 def add_car_reg(request):
+    """
+    Get Car reg from the user
+    Get API data
+    """
     sites = Site.objects.all()
     if request.user.is_authenticated:
         bookings = Booking.objects.filter(author=request.user)
@@ -60,6 +75,9 @@ def add_car_reg(request):
 
 
 def add_booking(request):
+    """
+    Save Car object
+    """
     sites = Site.objects.all()
     if request.user.is_authenticated:
         bookings = Booking.objects.filter(author=request.user)
@@ -67,6 +85,7 @@ def add_booking(request):
         bookings = None
     data = request.session['data']
 
+    # Check if Car exists in database before save
     if not Car.objects.filter(reg_number=data['registrationNumber']).exists():
         car = Car(
             owner=request.user,
@@ -88,10 +107,14 @@ def add_booking(request):
 
 
 def confirm_booking(request):
+    """
+    Create Booking object
+    """
     data = request.session['data']
     current_car = Car.objects.filter(reg_number=data['registrationNumber'])[0]
     if request.method == "POST":
         input_field = request.POST.get('date')
+        # Check if Car is booked
         if current_car.booked is True:
             messages.warning(request,
                              'This car is allready booked!')
@@ -111,6 +134,9 @@ def confirm_booking(request):
 
 
 def delete_booking(request, booking_id):
+    """
+    Delete Booking object
+    """
     item = get_object_or_404(Booking, id=booking_id)
     item.delete()
     car = item.car
@@ -122,6 +148,9 @@ def delete_booking(request, booking_id):
 
 
 def change_booking(request, booking_id):
+    """
+    Change Booking date
+    """
     sites = Site.objects.all()
     booking = get_object_or_404(Booking, id=booking_id)
     if request.method == "POST":
