@@ -1,3 +1,7 @@
+"""
+Get DVLA API cars information
+"""
+
 import os
 import requests
 if os.path.isfile('env.py'):
@@ -20,8 +24,3 @@ def get_car_data(reg_nr):
 
     car_data = response.json()
     return car_data
-
-
-# print(MOT_API_KEY)
-# number = 'YJ64ZXO'
-# get_car_data(number)
