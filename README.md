@@ -240,3 +240,52 @@ The following models were created to represent the database model structure for 
 ![Add car-reg/confirm-car/select-date](docs/features/car-confirm.png)
 ![Add car-reg/confirm-car/select-date](docs/features/select-date.png)
 </details>
+
+### Edit Booking
+- Screen where user can change booking date 
+- User stories covered: 4
+
+<details><summary>See feature images</summary>
+
+![Edit Booking](docs/features/change-date.png)
+</details>
+
+### Delete Booking
+- Button for deleting a booking
+- A js confirm message is used, for user to confirm the deletion 
+- User stories covered: 5
+
+<details><summary>See feature images</summary>
+
+![Delete Booking](docs/features/delete-1.png)
+![Delete Booking](docs/features/delete-2.png)
+</details>
+
+### Bookings Carousel
+- Bootstrap card where current bookings are displayed for logged in users.  
+- User stories covered: 7
+
+<details><summary>See feature images</summary>
+
+![Bookings Carousel](docs/features/delete-1.png)
+</details>
+
+### Feedback Messages
+- Django messages displayed to user, to confirm different app operations.
+- User stories covered: 6
+
+<details><summary>See feature images</summary>
+
+![Feedback Messages](docs/features/delete-success.png)
+![Feedback Messages](docs/features/booked-success.png)
+![Feedback Messages](docs/features/change-success.png)
+</details>
+
+### Rating
+- Bootstrap card where user can give a rating and see average rating.  
+- User stories covered: 11
+
+<details><summary>See feature images</summary>
+
+![rating](docs/features/rating.png)
+</details>
