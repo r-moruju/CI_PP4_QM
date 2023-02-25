@@ -75,7 +75,7 @@ The Quick MOT is an application where users can book their car MOT test.
 2.	I want to be able to easily navigate around the application to different pages
 3.	I want to create my account to be able to book MOT tests
 4.	I want to be able to edit my current booking date
-5.	I want to delete my booking if longer needed
+5.	I want to delete my booking if no longer needed
 6.	I want to see feedback messages so that I know that my booking was created, edited or deleted
 7.	As a returning user, I want to log in to the app to see my current bookings
 8.  I want to be able to log out from my account
@@ -168,3 +168,75 @@ The following models were created to represent the database model structure for 
   - [Wave Validator](https://wave.webaim.org/) to evaluate accessibility
 
 ##### Back to [top](#table-of-contents)
+
+## Features
+
+### Logo and Navigation Bar
+- Featured and consistent on the all pages
+- The nav bar contains links to Home page, Login page or Logout page.
+  - Logged-in users will see their name in the nav bar
+  - Not logged in users will have option to log in and register
+- The nav bar is fully responsive and changes to a toggler (hamburger menu) on smaller size screens
+- User stories covered: 2, 12
+
+<details><summary>See feature images</summary>
+
+![Logo and navbar](docs/features/nav-bar-full.png)
+![Logo and navbar](docs/features/nav-bar-full-out.png)
+![Logo and navbar](docs/features/nav-bar-burger.png)
+![Logo and navbar](docs/features/nav-bar-burger-expand.png)
+</details>
+
+### Home page
+- Home page includes nav bar, main body and a footer
+- Home page Heading Row includes description of the website and what its users can find and expect.
+- User stories covered: 1
+
+<details><summary>See feature images</summary>
+
+![Home page](docs/features/home.png)
+</details>
+
+### Sign up / Register
+- New users can create an account
+- The user must provide a valid username, password and password confirmation. Email address is optional
+- User cannot register the same details twice for an account
+- Once register the users are immediately logged in and taken to the home page
+- User stories covered: 3
+
+<details><summary>See feature images</summary>
+
+![Register](docs/features/register.png)
+</details>
+
+### Login
+- Returning users can login to their account
+- The user must have an account in the system and they must enter the correct username and password
+- Both fields are mandatory
+- Once logged in the user will be navigated to the home page
+- User stories covered: 7, 10
+
+<details><summary>See feature images</summary>
+
+![Login](docs/features/login.png)
+</details>
+
+### Logout
+- Confirmation screen for Logged in user to logout from their account 
+- User stories covered: 8
+
+<details><summary>See feature images</summary>
+
+![Logout](docs/features/logout.png)
+</details>
+
+### Add car-reg/confirm-car/select-date
+- Succession of screens where user can create a booking 
+- User stories covered: 9, 10
+
+<details><summary>See feature images</summary>
+
+![Add car-reg/confirm-car/select-date](docs/features/car-reg.png)
+![Add car-reg/confirm-car/select-date](docs/features/car-confirm.png)
+![Add car-reg/confirm-car/select-date](docs/features/select-date.png)
+</details>
