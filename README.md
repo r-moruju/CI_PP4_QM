@@ -84,7 +84,7 @@ The Quick MOT is an application where users can book their car MOT test.
 ### Site Owner
 9.	I want only the logged-in users to be able to create a booking
 10.	I want users to be able to create a booking on any day that suits their needs
-11.	I want user to be able to rate our service
+11.	I want users to be able to rate our service
 12.	I want my site to be fully responsive
 
 
@@ -399,4 +399,57 @@ Click 'Sign Out' button | Loads home page, and show feedback message | Works as 
 <img src="docs/testing/logout-link.png">
 <img src="docs/testing/logout.png">
 <img src="docs/testing/signout-message.png">
+</details>
+
+9. I want only the logged-in users to be able to create a booking
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+On the home page | For not logged-in users displays an 'Register' button, insted of an 'Book MOT Test' button | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="docs/testing/not-login-user.png">
+<img src="docs/testing/not-not-login.png">
+</details>
+
+10. I want users to be able to create a booking on any day that suits their needs
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+On the home page click on 'Book MOT Test' button | Loads 'add_car_reg' page | Works as expected |
+Add car registration and click 'Submit' | Loads 'confirm_car' page | Works as expected |
+Click 'Confirm' | Loads 'add_booking' page | Works as expected |
+Select date and click 'Confirm' | Loads home page, show feedback message, 'Your Bookings' card gets populated with the new booking | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="docs/testing/not-not-login.png">
+<img src="docs/testing/add-car-reg.png">
+<img src="docs/testing/confirm-car.png">
+<img src="docs/testing/add-booking.png">
+<img src="docs/testing/booked-success.png">
+<img src="docs/testing/bookings-card.png">
+</details>
+
+11. I want users to be able to rate our service
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+User can give a rating on the 'Service Rating' card | Average rating gets calculated and saved | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="docs/testing/rating-card.png">
+<img src="docs/testing/up-rating.png">
+</details>
+
+
+12. I want my site to be fully responsive
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+Change device screen size using chrome dev tools | The web functionality remains the same on various screen sizes | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="docs/testing/tablet.png">
+<img src="docs/testing/desktop.png">
+<img src="docs/testing/phone.png">
 </details>
