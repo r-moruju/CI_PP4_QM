@@ -289,3 +289,77 @@ The following models were created to represent the database model structure for 
 
 ![rating](docs/features/rating.png)
 </details>
+
+## Manual testing of user stories
+
+1. I want to see the home page with explanation of the app
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+Navigate to https://quick-mot.herokuapp.com/ | Home page main body loads with application description | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="docs/testing/home.png">
+</details>
+
+
+2. I want to be able to easily navigate around the application to different pages
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+Click on 'Home' link on the navigation bar | Loads home page | Works as expected |
+Click on 'Register' link on the navigation bar | Loads Sign UP page | Works as expected |
+Click on 'Login' link on the navigation bar | Loads Login page | Works as expected |
+Click on 'Logout' link on the navigation bar | Loads Logout page | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="docs/testing/home-link.png">
+<img src="docs/testing/register-link.png">
+<img src="docs/testing/register.png">
+<img src="docs/testing/login-link.png">
+<img src="docs/testing/login.png">
+<img src="docs/testing/logout-link.png">
+<img src="docs/testing/logout.png">
+</details>
+
+3. I want to create my account to be able to book MOT tests
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+Click 'Register' from the menu | Loads Registration page | Works as expected |
+Fill up the form | Returns errors if input fails validation | Works as expected |
+Click 'Sign UP' button at the bottom of the form | User is logged-in, taken to home page and presented with a confirmation message | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="docs/testing/register-link.png">
+<img src="docs/testing/register.png">
+<img src="docs/testing/register-form-error.png">
+<img src="docs/testing/register-message.png">
+</details>
+
+4. I want to be able to edit my current booking date
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+From the 'Your Bookings' card click 'Change Date' | Loads Change date page | Works as expected |
+Edit the date and click on 'Confirm' button | Loads home page and displays confirmation message | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="docs/testing/change-date-button.png">
+<img src="docs/testing/change-date-page.png">
+<img src="docs/testing/change-date-message.png">
+</details>
+
+
+5. I want to delete my booking if no longer needed
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+From the 'Your Bookings' card click 'Cancel' | The confirmation message appears | Works as expected |
+Click 'Ok' button to confirm deletion | Loads home page and displays confirmation message | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="docs/testing/cancel.png">
+<img src="docs/testing/cancel-confirm.png">
+<img src="docs/testing/cancel-message.png">
+</details>

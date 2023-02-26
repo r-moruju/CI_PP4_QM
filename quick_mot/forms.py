@@ -10,9 +10,12 @@ class CustomSignupForm(SignupForm):
     An edited allauth SignupForm to get more user information
     like First an Last name
     """
-    first_name = forms.CharField(max_length=30, label='First Name')
-    last_name = forms.CharField(max_length=30, label='Last Name')
-    phone_number = forms.CharField(max_length=15, label='Phone Number')
+    first_name = forms.CharField(max_length=30, min_length=3,
+                                 label='First Name')
+    last_name = forms.CharField(max_length=30, min_length=3,
+                                label='Last Name')
+    phone_number = forms.CharField(max_length=15, min_length=9,
+                                   label='Phone Number')
 
     def save(self, request):
         user = super(CustomSignupForm, self).save(request)
