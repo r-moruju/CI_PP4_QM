@@ -363,3 +363,40 @@ Click 'Ok' button to confirm deletion | Loads home page and displays confirmatio
 <img src="docs/testing/cancel-confirm.png">
 <img src="docs/testing/cancel-message.png">
 </details>
+
+6. I want to see feedback messages so that I know that my booking was created, edited or deleted
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+After each backend operation | The feedback message appears | Works as expected |
+
+<details><summary>Screenshot</summary>
+<img src="docs/testing/cancel-message.png">
+<img src="docs/testing/change-date-message.png">
+<img src="docs/testing/register-message.png">
+<img src="docs/testing/booked-success.png">
+</details>
+
+7. As a returning user, I want to log in to the app to see my current bookings
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+Click 'Login' from nav bar | Loads Login page | Works as expected |
+Enter login credentials and click 'Sign In' | Loads home page, and 'Your Bookings' card gets populated with your bookings | Works as expected |
+<details><summary>Screenshot</summary>
+<img src="docs/testing/login-link.png">
+<img src="docs/testing/login.png">
+<img src="docs/testing/bookings-card.png">
+</details>
+
+8. I want to be able to log out from my account
+
+**Step** | **Expected Result** | **Actual Result**
+------------ | ------------ | ------------ |
+Click 'Logout' from nav bar | Loads Logout page | Works as expected |
+Click 'Sign Out' button | Loads home page, and show feedback message | Works as expected |
+<details><summary>Screenshot</summary>
+<img src="docs/testing/logout-link.png">
+<img src="docs/testing/logout.png">
+<img src="docs/testing/signout-message.png">
+</details>
