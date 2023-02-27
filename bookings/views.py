@@ -152,6 +152,10 @@ def change_booking(request, booking_id):
     Change Booking date
     """
     sites = Site.objects.all()
+    if request.user.is_authenticated:
+        bookings = Booking.objects.filter(author=request.user)
+    else:
+        bookings = None
     booking = get_object_or_404(Booking, id=booking_id)
     if request.method == "POST":
         form = ChangeBookingForm(request.POST, instance=booking)
@@ -162,6 +166,7 @@ def change_booking(request, booking_id):
             return redirect("home")
     form = ChangeBookingForm(instance=booking)
     context = {
+        'bookings': bookings,
         'booking': booking,
         'form': form,
         'sites': sites
