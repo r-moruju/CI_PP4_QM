@@ -32,3 +32,11 @@
   .checked {
       color: orange;
   }
+
+  #edit-booking {
+    display: inline;
+  }
+
+.avg-rating {
+    font-size: medium;
+}

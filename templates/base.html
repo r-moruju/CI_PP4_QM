@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Bootstrap -->
     <script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
@@ -78,16 +79,16 @@
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body red-bg">
-                            <h2 class="card-title">Your Bookings</h2>
-                            <p class="card-text zero-margin">Upcomming bookings.</p>
+                            <h2 class="card-title text-center">Your Bookings</h2>
+                            <p class="card-text text-center zero-margin">Upcomming bookings.</p>
                             {% if user.is_authenticated %}
                             <div id="bookings_carousel" class="carousel slide">
                                 <div class="carousel-inner">
                                     {% for booking in bookings %}
                                     {% if forloop.counter == 1 %}
-                                    <div class="carousel-item red-bg active">
+                                    <div class="carousel-item red-bg active text-center">
                                         <p class="text-center">{{ booking }}</p>
-                                        <form style="display: inline;" action="{% url 'delete_booking' booking.id %}"
+                                        <form id="edit-booking" action="{% url 'delete_booking' booking.id %}"
                                             method="post"
                                             onsubmit="return confirm('Are you sure you want to cancel this booking for {{ booking.car }}?')">
                                             {% csrf_token %}
@@ -97,9 +98,9 @@
                                             Date</a>
                                     </div>
                                     {% else %}s
-                                    <div class="carousel-item red-bg">
+                                    <div class="carousel-item red-bg text-center">
                                         <p class="text-center">{{ booking }}</p>
-                                        <form style="display: inline;" action="{% url 'delete_booking' booking.id %}"
+                                        <form id="edit-booking" action="{% url 'delete_booking' booking.id %}"
                                             method="post"
                                             onsubmit="return confirm('Are you sure you want to cancel this booking for {{ booking.car }}?')">
                                             {% csrf_token %}
@@ -125,30 +126,30 @@
                                 </button>
                             </div>
                             {% else %}
-                            <p>Log in to see bookings</p>
+                            <p class="text-center">Log in to see bookings</p>
                             {% endif %}
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
-                        <div class="card-body red-bg">
+                        <div class="card-body red-bg text-center">
                             <h2 class="card-title text-center">Location</h2>
-                            <p class="card-text text-center zero-margin">301 Dollis Hill Lane</p>
-                            <p class="card-text text-center zero-margin">London</p>
-                            <p class="card-text text-center zero-margin">NW2 6JT</p>
-                            <p class="card-text text-center zero-margin">Tell: 1234567890</p>
+                            <p class="card-text zero-margin">301 Dollis Hill Lane</p>
+                            <p class="card-text zero-margin">London</p>
+                            <p class="card-text zero-margin">NW2 6JT</p>
+                            <p class="card-text zero-margin">Tell: 1234567890</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
-                        <div class="card-body red-bg">
+                        <div class="card-body red-bg text-center">
                             {% for site in sites %}
                             {% if user.is_authenticated%}
                             <h2 class="card-title">{{ site.header }}</h2>
                             <p class="card-text">Show us your satisfaction level</p>
-                            <h5 class="card-title">Avg rating:
+                            <h5 class="card-title avg-rating">Rating:
                                 <span class="fa fa-star {% if site.average_rating > 0 %} checked {% endif %}"></span>
                                 <span class="fa fa-star {% if site.average_rating > 1 %} checked {% endif %}"></span>
                                 <span class="fa fa-star {% if site.average_rating > 2 %} checked {% endif %}"></span>
@@ -179,7 +180,7 @@
                             {% else %}
                             <h2 class="card-title">Rate us!</h2>
                             <p class="card-text">Log in to rate our service.</p>
-                            <h5 class="card-title">Avg rating:
+                            <h5 class="card-title avg-rating">Rating:
                                 <span class="fa fa-star {% if site.average_rating > 0 %} checked {% endif %}"></span>
                                 <span class="fa fa-star {% if site.average_rating > 1 %} checked {% endif %}"></span>
                                 <span class="fa fa-star {% if site.average_rating > 2 %} checked {% endif %}"></span>
