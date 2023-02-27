@@ -26,11 +26,10 @@
     - [Browser compatibility](#browser-compatibility)
   - [Bugs](#bugs)
   - [Configuration](#configuration)
-    - [Google emails](#google-emails)
+    - [Heroku](#heroku)
     - [Forking the GitHub Repository](#forking-the-github-repository)
     - [Making a Local Clone](#making-a-local-clone)
   - [Credits](#credits)
-  - [Acknowledgements](#acknowledgements)
 
   ### About
 
@@ -160,12 +159,7 @@ The following models were created to represent the database model structure for 
 - [Heroku](https://www.heroku.com/) was used to deploy the project into live environment
 - [ElephantSQL](https://www.elephantsql.com/) – to host a Postgres database
 - [Visual Studio Code (VSCode)](https://code.visualstudio.com/) - code editor used to write this project
-- Validation:
-  - [WC3 Validator](https://validator.w3.org/) was used to validate the html in the project
-  - [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/) to validate the css in the project
-  - [JShint](https://jshint.com/) for JavaScript quality
-  - [Lighthouse](https://developers.google.com/web/tools/lighthouse/) for performance, accessibility, progressive web apps, SEO analysis of the project code
-  - [Wave Validator](https://wave.webaim.org/) to evaluate accessibility
+- [Vehicle Enquiry Service (VES) API](https://developer-portal.driver-vehicle-licensing.api.gov.uk/). To access vehicle details.
 
 ##### Back to [top](#table-of-contents)
 
@@ -290,7 +284,9 @@ The following models were created to represent the database model structure for 
 ![rating](docs/features/rating.png)
 </details>
 
-## Manual testing of user stories
+## Testing
+
+### Manual testing of user stories
 
 1. I want to see the home page with explanation of the app
 
@@ -453,3 +449,57 @@ Change device screen size using chrome dev tools | The web functionality remains
 <img src="docs/testing/desktop.png">
 <img src="docs/testing/phone.png">
 </details>
+
+### Performing tests on various devices
+
+The website was tested using Google Chrome Developer Tools Toggle Device Toolbar to simulate viewports of different devices.
+
+### Browser compatibility
+
+- Testing has been carried out on the following browsers:
+  - Googe Chrome
+  - Firefox Browser
+  - Microsoft Edge
+
+##### Back to [top](#table-of-contents)
+
+## Configuration
+
+### Heroku
+This application has been deployed from GitHub to Heroku by following the steps:
+
+1. Create or log in to your account at heroku.com
+2. Create a new app, add a unique app name (this project is named "quick-mot") and choose your region
+3. Click on create app
+4. Go to "Settings" tab
+5. Under Config Vars store any sensitive data you saved in env.py file. Also add another config var with key 'PORT' and value '8000'.
+6. Go to "Deploy" tab and select "GitHub" in "Deployment method"
+7. To link up your Heroku app to our Github repository code enter your repository name, click 'Search' and then 'Connect' when it shows below
+8. Choose the branch you want to buid your app from
+9. If prefered, click on "Enable Automatic Deploys", which keeps the app up to date with your GitHub repository
+10. Wait for the app to build. Once ready you will see the “App was successfully deployed” message and a 'View' button to take you to your deployed link.
+
+### Forking the GitHub Repository
+1. Go to the GitHub repository
+2. Click on Fork button in top right corner
+3. You will then have a copy of the repository in your own GitHub account.
+   
+### Making a Local Clone
+1. Go to the GitHub repository 
+2. Locate the Code button above the list of files and click it
+3. Highlight the "HTTPS" button to clone with HTTPS and copy the link
+4. Open commandline interface on your computer
+5. Change the current working directory to the one where you want the cloned directory
+6. Type git clone and paste the URL from the clipboard 
+  ```
+  $ git clone https://github.com/r-moruju/CI_PP4_QM.git
+  ```
+7. Press Enter to create your local clone
+
+##### Back to [top](#table-of-contents)
+
+## Credits
+
+### Code
+
+How to implement a rating mechanism in Django : https://medium.com/geekculture/django-implementing-star-rating-e1deff03bb1c

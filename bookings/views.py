@@ -68,6 +68,7 @@ def add_car_reg(request):
     if request.method == "POST":
         field = request.POST.get('car_reg')
         car_data = get_car_data(field.upper())
+        # Verify that the API returns usable data
         try:
             car_data['registrationNumber']
         except KeyError:
