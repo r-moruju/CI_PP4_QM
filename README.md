@@ -17,6 +17,7 @@
     - [Structure](#structure)
       - [Website pages](#website-pages)
       - [Database](#database)
+      - [Diagram](#diagram)
   - [Technologies Used](#technologies-used)
   - [Features](#features)
   - [Validation](#validation)
@@ -136,6 +137,12 @@ The following models were created to represent the database model structure for 
 
 ##### Rating Model
 - Designed to store User rating for the Site
+
+#### Diagram
+
+<details><summary>Exported database diagrams (ERD) from Django</summary>
+<img src="docs/diagram.png">
+</details>
 
 ## Technologies Used
 
