@@ -20,12 +20,10 @@
       - [Diagram](#diagram)
   - [Technologies Used](#technologies-used)
   - [Features](#features)
-  - [Validation](#validation)
   - [Testing](#testing)
     - [Manual testing of user stories](#manual-testing-of-user-stories)
     - [Performing tests on various devices](#performing-tests-on-various-devices)
     - [Browser compatibility](#browser-compatibility)
-  - [Bugs](#bugs)
   - [Configuration](#configuration)
     - [Heroku](#heroku)
     - [Forking the GitHub Repository](#forking-the-github-repository)
@@ -140,6 +138,9 @@ The following models were created to represent the database model structure for 
 
 #### Diagram
 
+<details><summary>My own diagram created on https://lucid.co/</summary>
+<img src="docs/my-diagram.png">
+</details>
 <details><summary>Exported database diagrams (ERD) from Django</summary>
 <img src="docs/diagram.png">
 </details>
