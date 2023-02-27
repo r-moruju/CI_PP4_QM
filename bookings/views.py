@@ -68,8 +68,13 @@ def add_car_reg(request):
     if request.method == "POST":
         field = request.POST.get('car_reg')
         car_data = get_car_data(field.upper())
-        request.session['data'] = car_data
-        return redirect('confirm_car')
+        try:
+            car_data['registrationNumber']
+        except KeyError:
+            messages.warning(request, 'Vehicle Not Found')
+        else:
+            request.session['data'] = car_data
+            return redirect('confirm_car')
     return render(request, 'add_car_reg.html',
                   {'bookings': bookings, 'sites': sites})
 
